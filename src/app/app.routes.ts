@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
 import { publicGuard } from './gaurds/public/public.guard';
-import { privateGuard } from './gaurds/private/private.guard';
+import {
+  privateGuard,
+  privateGuardChild,
+} from './gaurds/private/private.guard';
 import { protectedGuard } from './gaurds/protected/protected.guard';
 
 export const routes: Routes = [
@@ -23,6 +26,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/home/home.component').then((c) => c.HomeComponent),
     canActivate: [privateGuard],
+    canActivateChild: [privateGuardChild],
     children: [
       {
         path: '',
@@ -53,4 +57,5 @@ export const routes: Routes = [
       },
     ],
   },
+  { path: '**', redirectTo: '' }, // Redirect any unknown path to LandingPage
 ];
