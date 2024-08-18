@@ -57,5 +57,12 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'unauth',
+    loadComponent: () =>
+      import('./common/unauthorized/unauthorized.component').then(
+        (c) => c.UnauthorizedComponent
+      ),
+  },
   { path: '**', redirectTo: '' }, // Redirect any unknown path to LandingPage
 ];

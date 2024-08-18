@@ -21,7 +21,7 @@ export class LoginComponent {
     const obj: LoginPayload = {
       username: this.loginForm.controls.username.value,
       password: this.loginForm.controls.password.value,
-      expiresInMins: 30,
+      expiresInMins: 1,
     };
     this.auth.getLogin(obj).subscribe({
       next: (data: User) => {

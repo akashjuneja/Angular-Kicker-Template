@@ -6,7 +6,7 @@ const checkAuthentication = (): boolean => {
   const authService = inject(AuthService);
   const router = inject(Router);
   if (!authService.getIsAuthenticated()) {
-    router.navigate(['/login']);
+    router.navigate(['/unauth']);
     return false;
   }
   return true;
