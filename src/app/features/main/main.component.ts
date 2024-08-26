@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { MainService } from '../../services/main.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -10,6 +11,7 @@ import { MainService } from '../../services/main.service';
 })
 export class MainComponent {
   private main = inject(MainService);
+  private router = inject(Router);
   getProducts() {
     this.main.getProductsPage().subscribe({
       next: (data) => {
@@ -19,5 +21,8 @@ export class MainComponent {
         console.log(e);
       },
     });
+  }
+  navigateTo() {
+    this.router.navigate(['/home/concepts']);
   }
 }

@@ -34,6 +34,30 @@ export const routes: Routes = [
           import('./features/main/main.component').then((c) => c.MainComponent),
       },
       {
+        path: 'concepts',
+        loadComponent: () =>
+          import('./features/main/concepts/concepts.component').then(
+            (c) => c.ConceptsComponent
+          ),
+
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import(
+                './features/main/concepts/concept-list/concept-list.component'
+              ).then((c) => c.ConceptListComponent),
+          },
+          {
+            path: 'template-ref',
+            loadComponent: () =>
+              import(
+                './features/main/concepts/template-ref/template-ref.component'
+              ).then((c) => c.TemplateRefComponent),
+          },
+        ],
+      },
+      {
         path: 'products',
         loadComponent: () =>
           import('./features/products/products.component').then(
